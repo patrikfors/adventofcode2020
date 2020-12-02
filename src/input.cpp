@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-int read_input(std::istream &in, std::vector<std::string> output)
+int read_input(std::istream &in, std::vector<std::string>& output)
 {
     std::string line;
     uint32_t lines_read = 0;
@@ -13,6 +13,7 @@ int read_input(std::istream &in, std::vector<std::string> output)
         lines_read++;
     }
 
+std::cout << "read " << lines_read << " lines" << std::endl;
     //   if (FLAGS_v) {
     //     fmt::print("Read {} lines.\n", lines_read);
     //   }
@@ -20,11 +21,11 @@ int read_input(std::istream &in, std::vector<std::string> output)
     return 0;
 }
 
-int get_input(std::vector<std::string> args, std::vector<std::string> output)
+int get_input(std::vector<std::string> args, std::vector<std::string>& output)
 {
     bool original_sync_state = std::ios_base::sync_with_stdio(false);
 
-    if (args.size() > 0)
+    if (args.size() > 1)
     {
         std::ifstream file(args[1], std::ifstream::in);
         read_input(file, output);
