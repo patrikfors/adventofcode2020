@@ -8,6 +8,18 @@
 
 using int_t = uint32_t;
 
+void part1(std::unordered_set<int_t> const& data)
+{
+    for (auto d : data)
+    {
+        if (data.count(2020-d)) {
+            std::cout << "Found matching set: " << d << ", " << (2020-d) << std::endl;
+            std::cout << "Product is: " << d*(2020-d) << std::endl;
+        }
+        
+    }
+}
+
 int main(int argc, char *argv[])
 {
     std::vector<std::string> args(argv, argv + argc);
@@ -22,14 +34,8 @@ int main(int argc, char *argv[])
 
     std::unordered_set<int_t> data(std::begin(input), std::end(input));
 
-    for (auto d : data)
-    {
-        if (data.count(2020-d)) {
-            std::cout << "Found matching set: " << d << ", " << (2020-d) << std::endl;
-            std::cout << "Product is: " << d*(2020-d) << std::endl;
-        }
-        
-    }
+
+    part1(data);
 
     return 0;
 }
