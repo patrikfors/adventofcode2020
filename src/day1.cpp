@@ -23,8 +23,28 @@ void part1(std::unordered_set<int_t> const &data)
     {
         if (data.count(2020 - d))
         {
-            fmt::print("Found matching set: {}, {}\n", d, 2020-d);
-            fmt::print("Product is {}\n", d *(2020-d));
+            fmt::print("Found matching set: {}, {}\n", d, 2020 - d);
+            fmt::print("Product is {}\n", d * (2020 - d));
+        }
+    }
+}
+
+void part2(std::unordered_set<int_t> const &data)
+{
+    for (auto d1 : data)
+    {
+        for (auto d2 : data)
+        {
+            if (d1 == d2)
+            {
+                continue;
+            }
+
+            if (data.count(2020 - d1 - d2))
+            {
+                fmt::print("Found matching set: {}, {}, {}\n", d1, d2, (2020 - d1 - d2));
+                fmt::print("Product is {}\n", d1 * d2 * (2020 - d1 - d2));
+            }
         }
     }
 }
@@ -60,8 +80,6 @@ int main(int argc, char *argv[])
         input::get_stdin_input(input_strings);
     }
 
-    std::vector<std::string> args(argv, argv + argc);
-
     std::vector<int_t> input;
 
     std::transform(input_strings.begin(), input_strings.end(), std::back_inserter(input),
@@ -70,6 +88,7 @@ int main(int argc, char *argv[])
     std::unordered_set<int_t> data(std::begin(input), std::end(input));
 
     part1(data);
+    part2(data);
 
     return 0;
 }
