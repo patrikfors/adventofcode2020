@@ -148,8 +148,6 @@ int main(int argc, char *argv[])
                        return rval;
                    });
 
-    // std::unordered_set<int_t> data(std::begin(input), std::end(input));
-
     part1(input);
     part2(input);
 
