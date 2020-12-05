@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include <absl/strings/strip.h>
+
 #include <spdlog/spdlog.h>
 
 namespace

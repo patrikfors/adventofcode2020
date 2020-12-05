@@ -35,3 +35,11 @@ target_link_libraries(day4
         absl::flags
         absl::flags_parse
         spdlog::spdlog)       
+
+add_executable(day5 day5.cpp input.cpp)
+target_link_libraries(day5
+    PRIVATE
+        fmt::fmt
+        absl::flags
+        absl::flags_parse
+        spdlog::spdlog)       
