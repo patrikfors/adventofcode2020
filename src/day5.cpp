@@ -80,9 +80,26 @@ void part1(std::vector<boarding_pass_t> const &boarding_passes)
     fmt::print("largest id: {}\n", largest);
 }
 
-void part2(std::vector<std::string> const &map_rows)
+void part2(std::vector<boarding_pass_t> const &boarding_passes)
 {
     spdlog::info("Part 2");
+
+    std::vector<boarding_pass_t> sorted_passes(boarding_passes);
+
+    // sort it
+    std::sort(std::begin(sorted_passes), 
+              std::end(sorted_passes), 
+              [](boarding_pass_t a, boarding_pass_t b) {return a._id < b._id; });
+
+
+    int x = sorted_passes[0]._id-1;
+    for (auto b : sorted_passes) {
+        if(b._id != (x+1)) {
+            fmt::print("{} is missing\n", x+1);
+        }
+        x=b._id;
+        
+    }
 }
 
 int main(int argc, char *argv[])
@@ -119,7 +136,7 @@ int main(int argc, char *argv[])
     std::vector<boarding_pass_t> boarding_passes;
     parse_input(input_strings, std::back_inserter(boarding_passes));
     part1(boarding_passes);
-    part2(input_strings);
+    part2(boarding_passes);
 
     return 0;
 }
